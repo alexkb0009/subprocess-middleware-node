@@ -49,7 +49,7 @@ module.exports.transformResponse = function (transform, options) {
       // assumes bufferedResponse
       if (!body) return end.call(this);
       res.removeHeader('Content-Length');
-      body = transform(body, res);
+      body = transform(body, res, req);
       assert(typeof body !== 'string');
       res.setHeader('Content-Length', body.length);
       return end.call(this, body);
